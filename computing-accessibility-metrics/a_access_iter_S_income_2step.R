@@ -1,6 +1,6 @@
 # computing a floating catchment measure of access
+# that can be dis-aggregated by income level
 
-setwd("~/Dropbox/work/MA_Thesis/analysis_2")
 
 cities <- matrix(c("que","mtl","ott","tor","wpg","cgy","edm","van",1.4,1.65,1.5,1.7,1.4,1.4,1.4,1.6),ncol = 2,nrow = 8)
 # cities <- matrix(c("van",1.6),ncol = 2,nrow = 1) # for just 1
@@ -52,20 +52,20 @@ while (ccc < 9) {
   in_city <- cities[ccc,1]
   print(in_city)
   conv_factor <- as.numeric(cities[ccc,2])
-  
-  
+
+
   # input folders
   # in_city <- 'wpg'
   schedule_dir <- paste('matrix_da16_ct11/t_',in_city,'_79',sep = '')
   car_matrix_name <- paste('matrix_da16_ct11/drive/c_',in_city,'.csv',sep = '')
   out_file_name <- paste('out_a_all/comp_2step/a_',in_city,'.csv',sep = '')
-  
+
   # setup the car matrix - adding 10 min for parking / traffic
   in_car_matrix <- read.csv(car_matrix_name, check.names=FALSE)
   in_car_matrix_u <- conv_factor * (in_car_matrix) + 120
   in_car_matrix_u$id <- as.integer(((in_car_matrix_u$id) - 120) / conv_factor)
   in_car_matrix <- in_car_matrix_u
-  
+
   # functions
   #ftij <- function(matrix_in) {
   #  1 / (1 + exp((matrix_in / 15)-3))
@@ -73,17 +73,17 @@ while (ccc < 9) {
   ftij <- function(matrix_in) {
     (180*(90 + matrix_in)^-1)-1
   }
-  
-  
-  
-  
+
+
+
+
   # overall labour force col
   # "COL38","Labour - Total Sex / Total - Population aged 15 years and over by Labour force status - 25% sample data / In the labour force" (employed and unemployed combined)
-  
-  
-  
-  
-  
+
+
+
+
+
   # initial function for access to jobs - normalized by Lj
   Ai_wLj <- function(transit_matrix, jobtype, Lj_in) {
     L_col_name <- colnames(Lj_in)
@@ -94,7 +94,7 @@ while (ccc < 9) {
     access_matrix[access_matrix > 5400] <- NA
     access_matrix <-ftij(access_matrix / 60) * ftij(access_matrix / 60) # the gravity function
     access_matrix <- t(access_matrix)
-    
+
     emp_t <- subset(emp, select=c("tct", jobtype)) # change this line for job types !!!!
     emp_t <- merge(Lj_in, emp_t, by.x = 0, by.y = "tct")
     emp_t$ratio <- emp_t[,jobtype] / emp_t[,L_col_name]
@@ -111,10 +111,10 @@ while (ccc < 9) {
     colnames(access_matrix) <- c(jobtype)
     return(access_matrix)
   }
-  
-  
-  
-  
+
+
+
+
   # Lj_noAi_wMode
   Lj_noAi_wMode <- function(in_matrix, poptype, lab_mode) {
     access_matrix <- in_matrix
@@ -138,7 +138,7 @@ while (ccc < 9) {
     colnames(q) <- lab_col
     return(q)
   }
-  
+
   # Lj_wAi_wMode
   Lj_wAi_wMode <- function(in_matrix, poptype, lab_mode, Ai_in) {
     access_matrix <- in_car_matrix
@@ -166,32 +166,32 @@ while (ccc < 9) {
     colnames(q) <- lab_col
     return(q)
   }
-  
-  
-  
+
+
+
   # get counts for lab and inc data
   ctuid_in <- as.data.frame(colnames(in_car_matrix))
   O_emp <- emp[,c("tct",emp_col)]
   O_emp <- merge(ctuid_in,O_emp,by.x="colnames(in_car_matrix)",by.y="tct")
   sum_O_emp <- sum(O_emp[,emp_col])
   print(sum_O_emp)
-  
+
   # get counts for lab and inc data
   dauid_in <- as.data.frame(in_car_matrix$id)
   P_lab <- lab[,c("COL0",lab_col)]
   P_lab <- merge(dauid_in,P_lab,by.x=1,by.y="COL0")
   sum_P_lab <- sum(P_lab[,lab_col])
   print(sum_P_lab)
-  
-  
+
+
   ######
-  
-  
-  
-  
+
+
+
+
   # initial driving Lj no Ai
   Lj_initial_car_mode <- Lj_noAi_wMode(in_car_matrix, lab_col, "mode_car")
-  
+
   # initial transit Lj Ai
   sched_matrices <- list.files(schedule_dir)
   access_G_list <- list()
@@ -208,12 +208,12 @@ while (ccc < 9) {
   Lj_initial_transit_mode <- Reduce("+", access_G_list) / length(access_G_list)
   # combine
   Lj_initial_mode <- Lj_initial_transit_mode + Lj_initial_car_mode
-  
-  
-  
+
+
+
   ######
-  
-  
+
+
   # Ai transit initial with Lj
   access_G_list <- list()
   # looping the cube for the first time transit
@@ -230,18 +230,18 @@ while (ccc < 9) {
   # averaging the initial transit
   Ai_initial_transit <- Reduce("+", access_G_list) / length(access_G_list)
   Ai_initial_transit[Ai_initial_transit < 0.001] <- 0.001
-  
-  
+
+
   # driving Ai with Lj
   Ai_initial_car <- Ai_wLj(in_car_matrix, emp_col, Lj_initial_mode)
   Ai_initial_car[Ai_initial_car < 0.001] <- 0.001
-  
-  
-  
+
+
+
   # output to csv
   out_a <- merge(Ai_initial_transit,Ai_initial_car,by.x = 0, by.y = 0)
   colnames(out_a) <- c("dauid","Ai_transit","Ai_car")
   write.csv(out_a,file = out_file_name)
-  
+
   ccc <- ccc + 1
 }

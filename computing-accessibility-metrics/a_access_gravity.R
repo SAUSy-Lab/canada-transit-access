@@ -1,6 +1,6 @@
-# computing a floating catchment measure of access
+# computing access to jobs with a gravity function
 
-setwd("~/Dropbox/work/MA_Thesis/analysis_2")
+
 
 # input folders
 in_city <- 'que'
@@ -102,4 +102,3 @@ Ai_initial_car <- Ai_noLj(in_car_matrix, -0.02310491, emp_col)
 out_a <- merge(Ai_initial_transit,Ai_initial_car,by.x = 0, by.y = 0)
 colnames(out_a) <- c("dauid","Ai_transit","Ai_car")
 write.csv(out_a,file = out_file_name)
-

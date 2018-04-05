@@ -1,12 +1,10 @@
-# 
+# computing a floating catchment measure of access
+# i.e. number of jobs that can be reached within a travel time threshold
+
+
 library(ggplot2)
 library(stringr)
 
-
-
-# computing a floating catchment measure of access
-
-setwd("~/Dropbox/work/MA_Thesis/analysis_2")
 
 # input folders
 in_city <- 'tor'
@@ -78,15 +76,15 @@ access_T_list <- list()
 sched_matrices <- list.files(schedule_dir)
 f <- 1
 for (sm in sched_matrices) {
-  
+
   print(sm)
   sm_name <- paste(schedule_dir, '/', sm, sep='')
-  
+
   in_transit_matrix <- read.csv(sm_name, check.names=FALSE)
-  
+
   nrout <- nrow(in_transit_matrix)
   out_matrix <- matrix(data = NA, nrow = nrout, ncol = 1)
-  
+
   x <- 900
   while (x <= 5400) {
     out_matrix <- cbind(out_matrix, access_score_T(in_transit_matrix, x))
@@ -94,12 +92,12 @@ for (sm in sched_matrices) {
     x <- x + 900
   }
   out_matrix <- out_matrix[,-1]
-  
+
   # q <- access_score_T(in_transit_matrix,3600)
-  
+
   access_T_list[[f]] <- out_matrix
   f <- f + 1
-  
+
 }
 
 # averaging the thing
@@ -117,41 +115,39 @@ write.csv(x = T_means,file = out_file_name)
 #   t1800 <- (s["46110663","1800"])
 #   l30 <- c(l30,t1800)
 # }
-# 
+#
 # mean(l30)
 # l30 <- as.data.frame(l30)
 # l30$i <- sched_matrices
-# 
+#
 # # 45 minutes
 # l45 <- c()
 # for (s in access_T_list) {
 #   t1800 <- (s["46110663","2700"])
 #   l45 <- c(l45,t1800)
 # }
-# 
+#
 # mean(l45)
 # l45 <- as.data.frame(l45)
 # l45$i <- sched_matrices
-# 
+#
 # l <- merge(l30,l45,by.x="i",by.y="i")
-# 
+#
 # lspl <- as.data.frame(str_split_fixed(l$i, "_",5))
 # l <- merge(l,lspl, by.x = 0, by.y = 0)
-# 
+#
 # l$i2 <- substr(l$i,8,8)
 # l <- subset(l,i2 != 1)
 # l$m <- as.numeric(substr(l$i,10,11))
-# 
-# 
-# ggplot() + 
-#   geom_hline(yintercept = mean(l$l30),color = "red",linetype=5) + 
-#   geom_hline(yintercept = mean(l$l45),color = "red",linetype=5) + 
-#   geom_line(data = l, aes(x=m,y=l30)) + 
+#
+#
+# ggplot() +
+#   geom_hline(yintercept = mean(l$l30),color = "red",linetype=5) +
+#   geom_hline(yintercept = mean(l$l45),color = "red",linetype=5) +
+#   geom_line(data = l, aes(x=m,y=l30)) +
 #   geom_point(data = l, aes(x=m,y=l30)) +
-#   geom_line(data = l, aes(x=m,y=l45)) + 
-#   geom_point(data = l, aes(x=m,y=l45)) + 
-#   theme_minimal() + xlab("") + ylab("") + 
-#   scale_x_continuous(minor_breaks = seq(0, 60, 1),breaks = seq(0,60,5)) + 
+#   geom_line(data = l, aes(x=m,y=l45)) +
+#   geom_point(data = l, aes(x=m,y=l45)) +
+#   theme_minimal() + xlab("") + ylab("") +
+#   scale_x_continuous(minor_breaks = seq(0, 60, 1),breaks = seq(0,60,5)) +
 #   scale_y_continuous(breaks = seq(0, 200000, 20000),limits = c(1,200000))
-
-
