@@ -20,7 +20,8 @@ The competitive measure accounts for the size of the labour force who are compet
 
 Lj is a measure of access to the labour force from j and Pi is the size of the labour force at i. This approach requires iteration until convergence. This is further expanded upon to account for a multi-modal labour force, ability to compare between regions, and any imbalance between the number of jobs and number of workers within a region. Lambda is a travel mode (e.g. car or transit) in the following.
 
-![A3](imgs/a3.png)  ![A4](imgs/a3.png)
+![A3](imgs/a3.png)  
+![A4](imgs/a4.png)
 
 Data for the location of jobs and the labour force are from Statistics Canada's 2016 census of population. The network graphs for measuring travel times from i to j were computed via OpenTripPlanner and OSRM using input data from OpenStreetMap and GTFS data from various transit agencies across Canada. The travel times for public transit and by car are for the morning commute period (for transit, this was computed for every minute from 7:00am to 9:00am and then averaged to account for fluctuating schedules). The overlay dot density layers are also from the 2016 census.
 
