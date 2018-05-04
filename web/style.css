@@ -1,0 +1,356 @@
+
+body { margin:0; padding:0; }
+
+#map {
+  position:absolute;
+  top:0;
+  bottom:0;
+  width:calc(100% - 300px);
+  /* overflow:hidden; */
+  height:100vh;
+  border-right: solid 1px;
+}
+
+#bar {
+  width: 300px;
+  height: 100vh;
+  float: right;
+  overflow: auto;
+}
+
+#title {
+  width: 300px;
+  height: 75px;
+  float: right;
+  margin-top: -5px;
+  border-bottom: solid 1px;
+}
+
+#city {
+  width: 300px;
+  height: 70px;
+  float: right;
+  padding-top: 5px;
+  border-bottom: solid 1px;
+}
+
+#mode {
+  width: 300px;
+  height: 53px;
+  float: right;
+  padding-top: 5px;
+  border-bottom: solid 1px;
+}
+
+#c_van, #c_cgy, #c_edm, #c_wpg, #c_tor, #c_ott, #c_mtl, #c_que {
+  width: 89px;
+  height: 20px;
+  float: left;
+  cursor: pointer;
+  padding-left: 10px;
+  opacity: 0.7;
+}
+
+/* #c_van:hover, #c_cgy:hover, #c_edm:hover, #c_wpg:hover, #c_tor:hover, #c_ott:hover, #c_mtl:hover, #c_que:hover {
+  color: red;
+  opacity: 1.0;
+} */
+
+#c_city, #m_mode {
+  width: 89px;
+  height: 20px;
+  float: left;
+  padding-left: 10px;
+  opacity: 1;
+  /* border: solid 1px; */
+}
+
+#m_car {
+  width: 89px;
+  height: 20px;
+  float: left;
+  cursor: pointer;
+  padding-left: 10px;
+  opacity: 0.7;
+}
+
+#m_transit {
+  width: 89px;
+  height: 20px;
+  float: left;
+  cursor: pointer;
+  padding-left: 10px;
+  color: red;
+  opacity: 1;
+}
+
+ #m_ratio {
+   width: 148px;
+   height: 20px;
+   float: left;
+   cursor: pointer;
+   padding-left: 10px;
+   opacity: 0.7;
+
+ }
+
+ #more_info {
+   width: 20px;
+   height: 20px;
+   float: left;
+   cursor: pointer;
+   padding-left: 10px;
+   opacity: 0.7;
+ }
+  #more_info p {
+    font-size: 16px;
+  }
+
+ #access {
+   width: 300px;
+   height: 135px;
+   float: right;
+   padding-top: 5px;
+   border-bottom: solid 1px;
+ }
+
+ #a_access {
+   width: 250px;
+   height: 20px;
+   float: left;
+   padding-left: 10px;
+   opacity: 1;
+ }
+
+ #a_T30, #a_T45, #a_T60, #a_grav, #a_comp {
+   width: 250px;
+   height: 20px;
+   float: left;
+   padding-left: 10px;
+   cursor: pointer;
+   opacity: 0.7;
+   /* border: solid 1px; */
+ }
+
+ #a_T45 {
+   width: 250px;
+   height: 20px;
+   float: left;
+   padding-left: 10px;
+   cursor: pointer;
+   color: red;
+   opacity: 1;
+ }
+
+#legend_wrapper {
+  width: 300px;
+  height: 148px;
+
+  border-bottom: solid 1px;
+  float: right;
+}
+
+#legend {
+  width: 200px;
+  height: 138px;
+  float: left;
+  padding-top: 10px;
+
+}
+
+#legend_box {
+  width: 25px;
+  height: 25px;
+  /* border-bottom: solid 1px; */
+  margin-left: 10px;
+  margin-right: 10px;
+  float: left;
+}
+
+
+#legend_value_1,#legend_value_2,#legend_value_3,#legend_value_4,#legend_value_5 {
+  width: 155px;
+  height: 25px;
+  float: left;
+  color: black;
+  opacity: 0.85;
+}
+
+#legend_side {
+  width: 99px;
+  height: 138px;
+  float: right;
+  padding-top: 10px;
+  border-left: solid 1px;
+}
+
+#r_rural {
+  width: 80px;
+  height: 40px;
+  float: left;
+  padding-left: 10px;
+  opacity: 1;
+}
+
+#r_hide {
+  width: 80px;
+  height: 20px;
+  float: left;
+  padding-left: 10px;
+  cursor: pointer;
+  color: red;
+  opacity: 1;
+}
+
+#r_show {
+  width: 80px;
+  height: 20px;
+  float: left;
+  padding-left: 10px;
+  cursor: pointer;
+  color: black;
+  opacity: 0.7;
+}
+
+
+#dots {
+  width: 300px;
+  height: 110px;
+  float: right;
+  padding-top: 5px;
+  border-bottom: solid 1px;
+}
+
+#d_demographics {
+  width: 150px;
+  height: 20px;
+  float: left;
+  padding-left: 10px;
+  opacity: 1;
+}
+
+#d_none {
+  width: 80px;
+  height: 20px;
+  float: left;
+  padding-left: 10px;
+  cursor: pointer;
+  color: red;
+  opacity: 1;
+}
+
+#d_pop, #d_lico, #d_unem, #d_reim {
+  width: 280px;
+  height: 20px;
+  float: left;
+  padding-left: 10px;
+  cursor: pointer;
+  color: black;
+  opacity: 0.7;
+}
+
+#attri {
+  width: 300px;
+  height: 110px;
+  float: right;
+  padding-top: 5px;
+  border-bottom: solid 1px;
+}
+
+#hline {
+  width: 300px;
+  height: 2px;
+  float: right;
+  padding-top: 5px;
+  border-bottom: solid 1px;
+}
+
+#attri p {
+  padding-left: 10px;
+  opacity: 0.75;
+  line-height: 16px;
+}
+
+h2 {
+  font-size: 14px;
+  font-family: 'Titillium Web', sans-serif;
+  font-weight: bold;
+  padding-left: 10px;
+}
+
+h1 {
+  font-size: 18px;
+  font-family: 'Titillium Web', sans-serif;
+  font-weight: bold;
+  padding-left: 10px;
+  line-height: 26px;
+}
+
+a {
+  color: red;
+  text-decoration: none;
+}
+
+#more_info a {
+  color: blue;
+  text-decoration: none;
+}
+
+#more_info:hover {
+  opacity: 1;
+}
+
+p {
+  font-size: 12px;
+  font-family: 'Titillium Web', sans-serif;
+  padding: 0px;
+  margin: 0px;
+}
+
+a.mapboxgl-ctrl-logo {
+  opacity: 0;
+  height: 0px;
+}
+
+
+.mapboxgl-popup-close-button {
+  position: absolute;
+  right: 0;
+  top: 0;
+  border: none;
+  border-radius: 0 3px 0 0;
+  cursor: pointer;
+  color: red;
+  background-color: rgba(0,0,0,0);
+}
+
+.mapboxgl-popup-content {
+    position: relative;
+    background: #fff;
+    border-radius: 3px;
+    box-shadow: 0 0 3px rgba(255,0,0,1);
+    padding: 10px 10px 15px;
+    pointer-events: auto;
+}
+.mapboxgl-popup-tip {
+    width: 0px;
+    height: 0px;
+    opacity: 0;
+    /* border: 10px solid transparent;
+    z-index: 1; */
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* --------------------- */

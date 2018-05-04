@@ -1,0 +1,125 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8' />
+    <title>Canada Access to Jobs</title>
+    <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+
+    <link href="https://fonts.googleapis.com/css?family=Titillium+Web:400,700" rel="stylesheet">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.44.2/mapbox-gl.js'></script>
+    <script src='web/cities.js'></script>
+
+    <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.44.2/mapbox-gl.css' rel='stylesheet' />
+    <link href='web/style.css' rel='stylesheet' />
+
+</head>
+<body>
+
+<div id='map'></div>
+
+
+<div id='bar'>
+
+  <div id='hline'></div>
+
+  <div id='title'><h1>Access to Employment in <br>Canadian Cities</h1>
+  </div>
+
+  <div id='hline'></div>
+
+  <div id='city'>
+    <div id='c_city'><p><b>Select City:</b></p></div>
+
+    <div onclick='city_switch("Calgary")' onmouseover='textred1("c_cgy")' onmouseout='textred2("c_cgy")' id='c_cgy'><p>Calgary</p></div>
+    <div onclick='city_switch("Edmonton")' onmouseover='textred1("c_edm")' onmouseout='textred2("c_edm")' id='c_edm'><p>Edmonton</p></div>
+    <div onclick='city_switch("Montreal")' onmouseover='textred1("c_mtl")' onmouseout='textred2("c_mtl")' id='c_mtl'><p>Montreal</p></div>
+    <div onclick='city_switch("Ottawa")' onmouseover='textred1("c_ott")' onmouseout='textred2("c_ott")' id='c_ott'><p>Ottawa</p></div>
+    <div onclick='city_switch("Quebec City")' onmouseover='textred1("c_que")' onmouseout='textred2("c_que")' id='c_que'><p>Quebec City</p></div>
+    <div onclick='city_switch("Toronto")' onmouseover='textred1("c_tor")' onmouseout='textred2("c_tor")' id='c_tor'><p>Toronto</p></div>
+    <div onclick='city_switch("Vancouver")' onmouseover='textred1("c_van")' onmouseout='textred2("c_van")' id='c_van'><p>Vancouver</p></div>
+    <div onclick='city_switch("Winnipeg")' onmouseover='textred1("c_wpg")' onmouseout='textred2("c_wpg")' id='c_wpg'><p>Winnipeg</p></div>
+  </div>
+
+  <div id='mode'>
+    <div id='m_mode'><p><b>Select Travel Mode:</b></p></div>
+    <div onclick='mode_switch("transit")' onmouseover='textred1("m_transit")' onmouseout='textred3("m_transit")' id='m_transit'><p>Public Transit</p></div>
+    <div onclick='mode_switch("car")' onmouseover='textred1("m_car")' onmouseout='textred3("m_car")' id='m_car'><p>Private Car</p></div>
+    <div id='m_mode'><p><b></b></p></div>
+    <div onclick='mode_switch("ratio")' onmouseover='textred1("m_ratio")' onmouseout='textred3("m_ratio")' id='m_ratio'><p>Ratio = Transit / Car</p></div>
+    <div id='more_info'><p><b><a href="https://github.com/jamaps/canada-transit-access-map/"target="_blank">?</a></b></p></div>
+  </div>
+
+
+  <div id='access'>
+    <div id='a_access'><p><b>Select Access Measure:</b></p></div>
+    <div onclick='measure_switch("T30")' onmouseover='textred1("a_T30")' onmouseout='textred4("a_T30")' id='a_T30'><p>Number of jobs reachable within 30 minutes</p></div>
+    <div onclick='measure_switch("T45")' onmouseover='textred1("a_T45")' onmouseout='textred4("a_T45")' id='a_T45'><p>Number of jobs reachable within 45 minutes</p></div>
+    <div onclick='measure_switch("T60")' onmouseover='textred1("a_T60")' onmouseout='textred4("a_T60")' id='a_T60'><p>Number of jobs reachable within 60 minutes</p></div>
+    <div onclick='measure_switch("grav")' onmouseover='textred1("a_grav")' onmouseout='textred4("a_grav")' id='a_grav'><p>Accessibility index using a gravity model</p></div>
+    <div onclick='measure_switch("comp")' onmouseover='textred1("a_comp")' onmouseout='textred4("a_comp")' id='a_comp'><p>Accessibility index using a competitive model</p></div>
+
+
+    <div id='more_info'><p><b><a href="https://github.com/jamaps/canada-transit-access-map/"target="_blank">?</a></b></p></div>
+  </div>
+
+  <div id='legend_wrapper'>
+
+    <div id='legend'>
+
+      <div id='legend_box'style="background-color: #253494;"></div>
+      <div id='legend_value_5'><p>500,000 and up</p></div>
+      <div id='legend_box'style="background-color: #2c7fb8;"></div>
+      <div id='legend_value_4'><p>250,000 to 500,000</p></div>
+      <div id='legend_box'style="background-color: #41b6c4;"></div>
+      <div id='legend_value_3'><p>100,000 to 250,000</p></div>
+      <div id='legend_box'style="background-color: #a1dab4;"></div>
+      <div id='legend_value_2'><p>50,000 to 100,000</p></div>
+      <div id='legend_box'style="background-color: #F5F294;"></div>
+      <div id='legend_value_1'><p>0 to 50,000</p></div>
+
+    </div>
+
+    <div id='legend_side'>
+        <div id='r_rural'><p><b>Areas with low pop density:</b></p></div>
+        <div id='r_hide' onclick='rural_switch("r_hide")' onmouseover='textred1("r_hide")' onmouseout='textred5("r_hide")'><p>Hide</p></div>
+        <div id='r_show' onclick='rural_switch("r_show")' onmouseover='textred1("r_show")' onmouseout='textred5("r_show")'><p>Show</p></div>
+        <!-- <div id='more_info'><p><b><a href="https://github.com/jamaps/canada-transit-access-map/"target="_blank">?</a></b></p></div> -->
+    </div>
+
+  </div>
+
+  <div id='dots'>
+
+    <div id='d_demographics'><p><b>Overlay Demographics:</b></p></div>
+
+    <div onclick='dot_switch("d_none")' onmouseover='textred1("d_none")' onmouseout='textred6("d_none")' id='d_none'><p>None</p></div>
+    <div onclick='dot_switch("d_pop")' onmouseover='textred1("d_pop")' onmouseout='textred6("d_pop")' id='d_pop'><p>1 dot = 500 people</p></div>
+    <div onclick='dot_switch("d_lico")' onmouseover='textred1("d_lico")' onmouseout='textred6("d_lico")' id='d_lico'><p>1 dot = 50 people living below the poverty line</p></div>
+    <div onclick='dot_switch("d_reim")' onmouseover='textred1("d_reim")' onmouseout='textred6("d_reim")' id='d_reim'><p>1 dot = 25 recent immigrants</p></div>
+    <div onclick='dot_switch("d_unem")' onmouseover='textred1("d_unem")' onmouseout='textred6("d_unem")' id='d_unem'><p>1 dot = 25 people who are unemployed</p></div>
+
+  </div>
+
+  <div id='hline'></div>
+
+  <div id='attri'>
+    <p>
+    Map made by <a href="https://jamaps.github.io/"target="_blank">Jeff Allen</a> in 2018 using <a href="http://mapbox.com/"target="_blank">Mapbox</a>, <a href="https://www.qgis.org/en/site/"target="_blank">QGIS</a>, <a href="http://www.opentripplanner.org/"target="_blank">OTP</a>, and <a href="http://project-osrm.org/"target="_blank">OSRM</a> with data from <a href="http://openstreetmap.org/"target="_blank">OpenStreetMap</a>, <a href="http://www12.statcan.gc.ca/census-recensement/2016/dp-pd/index-Eng.cfm" target="_blank">Statistics Canada</a>, and open data from various transit agencies across Canada.
+    </p>
+    <p> - - - - - - - - - - - - - - - - - - - - - - - - -</p>
+    <p>
+    Details are on <a href="https://github.com/jamaps/canada-transit-access-map/"target="_blank">GitHub</a>.
+    </p>
+
+  </div>
+
+</div>
+
+<script src='web/main.js'>
+</script>
+
+</body>
+</html>
