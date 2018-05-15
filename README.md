@@ -3,7 +3,7 @@
 
 Code for measuring and visualizing access to employment in Canadian cities.
 
-View the data on an interactive map [here!](https://sausy-lab.github.io/canada-transit-access/map.html) (warning, still in dev)
+View the data on an interactive map [here](https://sausy-lab.github.io/canada-transit-access/map.html) :)
 
 
 -----------------------------
@@ -25,13 +25,13 @@ Lj is a measure of access to the labour force from j and Pi is the size of the l
 
 Data for the location of jobs and the labour force are from Statistics Canada's 2016 census of population. The network graphs for measuring travel times from i to j were computed via OpenTripPlanner and OSRM using input data from OpenStreetMap and GTFS data from various transit agencies across Canada. The travel times for public transit and by car are for the morning commute period (for transit, this was computed for every minute from 7:00am to 9:00am and then averaged to account for fluctuating schedules). The overlay dot density layers are also from the 2016 census.
 
-The code to generate the accessibility measures in this map are broken down into four sub-folders.
+The code to generate the accessibility measures in this map are broken down into the following sub-folders.
 
 **computing-travel-times** - For computing origin-destination matrices between home locations and potential work locations using OpenTripPlanner and OSRM
 
-**computing-accessibility-metrics** - Code for inputting travel times and demographic and employment data from the Canadian census to generate measures of access to employment by travel mode
+**computing-accessibility-metrics** - Code for inputting travel times and demographic and employment data from the Canadian census to generate measures of access to employment by travel mode.
 
-**analysis-and-plots** - Various R scripts for tabulating, correlating, and visualizing the accessibility measures
+**analysis-and-plots** - Various R scripts for tabulating, correlating, and visualizing the accessibility measures alongside demographic and socio-econmoic data.
 
 A more detailed description is still to come, but slides from a couple recent presentations on this work can be found [here](https://github.com/SAUSy-Lab/canada-transit-access/blob/master/slides/UAA%20AAG%202018.pdf)
 
