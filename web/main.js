@@ -18,7 +18,7 @@ var all_access_data_layers = [
 
 
 // setting up the map :)
-mapboxgl.accessToken = 'pk.eyJ1IjoiamVmZmFsbGVuIiwiYSI6InJOdUR0a1kifQ.fTlTX02Ln0lwgaY4vkubSQ';
+mapboxgl.accessToken = 'pk.eyJ1IjoiamVmZmFsbGVuIiwiYSI6ImNqaGlnMTFzMzI3b3QzZG50azltZmlsNXAifQ.U_UWmNAW_eSnwLJJJyNGow';
 var map = new mapboxgl.Map({
     container: 'map', // div id
     style: 'mapbox://styles/jeffallen/cjgl7s02y001v2so0g098zg90',
