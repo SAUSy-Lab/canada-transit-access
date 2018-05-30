@@ -5,7 +5,7 @@ Code for measuring and visualizing access to employment in Canadian cities.
 
 View the data on an interactive map [here](https://sausy-lab.github.io/canada-transit-access/map.html) :)
 
-The raw data is [here](https://github.com/SAUSy-Lab/canada-transit-access/data). A brief description is below, a more detailed description is in a [technical report](https://sausy-lab.github.io/canada-transit-access/data/canada-access-to-jobs-tech-report.pdf), slides from a recent presentation are [here](https://github.com/SAUSy-Lab/canada-transit-access/blob/master/slides/UAA%20AAG%202018.pdf)
+The raw data is [here](https://github.com/SAUSy-Lab/canada-transit-access/tree/gh-pages/data). A brief description is below, a more detailed description is in a [technical report](https://sausy-lab.github.io/canada-transit-access/data/canada-access-to-jobs-tech-report.pdf), slides from a recent presentation are [here](https://github.com/SAUSy-Lab/canada-transit-access/blob/master/slides/UAA%20AAG%202018.pdf)
 
 
 -----------------------------
