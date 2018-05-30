@@ -5,6 +5,8 @@ Code for measuring and visualizing access to employment in Canadian cities.
 
 View the data on an interactive map [here](https://sausy-lab.github.io/canada-transit-access/map.html) :)
 
+The raw data is [here](https://github.com/SAUSy-Lab/canada-transit-access/data). A brief description is below, a more detailed description is in a [technical report](https://github.com/SAUSy-Lab/canada-transit-access/data/canada-access-to-jobs-tech-report.pdf), slides from a recent presentation are [here](https://github.com/SAUSy-Lab/canada-transit-access/blob/master/slides/UAA%20AAG%202018.pdf)
+
 
 -----------------------------
 
@@ -33,15 +35,14 @@ The code to generate the accessibility measures in this map are broken down into
 
 **analysis-and-plots** - Various R scripts for tabulating, correlating, and visualizing the accessibility measures alongside demographic and socio-econmoic data.
 
-A more detailed description is still to come, but slides from a couple recent presentations on this work can be found [here](https://github.com/SAUSy-Lab/canada-transit-access/blob/master/slides/UAA%20AAG%202018.pdf)
+**
 
 Any comments or questions, contact me at jeff.allen AT utoronto.ca. If the data are used for research purposes, please cite as
 
 ```
-@MastersThesis{allen2018thesis,
-  Title    = {Mapping inequalities in transit access to employment in Canadian cities},
-  Author   = {Allen, Jeff},
-  School   = {University of Toronto},
+@techreport{allen2018,
+  Title    = {Generating measures of access to employment for Canada’s eight largest urban regions},
+  Author   = {Allen, Jeff and Farber, Steven},
   Year     = {2018}
 }
 ```

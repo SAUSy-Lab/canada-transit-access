@@ -1,0 +1,26 @@
+Measures of access to employment for Canadian Cities.
+
+Fields:
+
+gid = record id
+dauid = dissemination area
+cmauid = census metropolitan area
+population = population of the dissemination area
+area_km2 = area of the dissemination area in km^2
+pop_density = population density of the dissemination area in people per km^2
+comp_transit = measure of competitive accessibility to jobs by transit from 0 (lowest) to 1 (highest)
+comp_car = measure of competitive accessibility to jobs by transit from 0 (lowest) to 1 (highest)
+grav_transit = measure of accessibility to jobs by transit using a gravity function
+grav_car = measure of accessibility to jobs by car using a gravity function
+T30_transit = number of jobs reachable within a 30 minute transit commute
+T45_transit = number of jobs reachable within a 45 minute transit commute
+T60_transit = number of jobs reachable within a 60 minute transit commute
+T30_car = number of jobs reachable within a 30 minute car commute
+T45_car = number of jobs reachable within a 45 minute car commute
+T60_car = number of jobs reachable within a 60 minute car commute
+comp_ratio = comp_transit / comp_car
+grav_ratio = grav_transit / grav_car
+T30_ratio = T30_transit / T30_car	
+T45_ratio = T45_transit / T45_car	
+T60_ratio = T60_transit / T60_car
+
