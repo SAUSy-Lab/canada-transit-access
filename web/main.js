@@ -123,7 +123,7 @@ function mode_switch(mode_button_name) {
       document.getElementById("legend_value_1").innerHTML = "<p>" + String(legend_array[0][0]) + " to " + String(legend_array[1][0]) + "</p>";
       document.getElementById("legend_value_2").innerHTML = "<p>" + String(legend_array[1][0]) + " to " + String(legend_array[2][0]) + "</p>";
       document.getElementById("legend_value_3").innerHTML = "<p>" + String(legend_array[2][0]) + " to " + String(legend_array[3][0]) + "</p>";
-      document.getElementById("legend_value_4").innerHTML = "<p>" + String(legend_array[3][0]) + " to " + String(legend_array[3][0]) + "</p>";
+      document.getElementById("legend_value_4").innerHTML = "<p>" + String(legend_array[3][0]) + " to " + String(legend_array[4][0]) + "</p>";
       document.getElementById("legend_value_5").innerHTML = "<p>" + String(legend_array[4][0]) + " to " + "1.0" + "</p>";
     }
     else if (current_measure == "comp") {
