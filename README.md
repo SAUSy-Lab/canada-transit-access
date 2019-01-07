@@ -5,8 +5,36 @@ Code for measuring and visualizing access to employment in Canadian cities.
 
 View the data on an interactive map [here](https://sausy-lab.github.io/canada-transit-access/map.html) :)
 
-The raw data is [here](https://github.com/SAUSy-Lab/canada-transit-access/tree/gh-pages/data). A brief description is below, a more detailed description is in a [technical report](https://sausy-lab.github.io/canada-transit-access/data/canada-access-to-jobs-tech-report.pdf), slides from a recent presentation are [here](https://github.com/SAUSy-Lab/canada-transit-access/blob/master/slides/UAA%20AAG%202018.pdf)
+The raw data is [here](https://github.com/SAUSy-Lab/canada-transit-access/tree/gh-pages/data). A brief description is below, a more detailed description is in a [technical report](https://sausy-lab.github.io/canada-transit-access/data/canada-access-to-jobs-tech-report.pdf), slides from a couple recent presentations are [here](https://github.com/SAUSy-Lab/canada-transit-access/blob/master/slides)
 
+This data has been used as the basis for a couple "academic" papers, one on comparing different types of accessibility measures, and the second on analyzing transport poverty in Canadian cities. Here's their citation info:
+
+```
+@article{allen2019ga,
+  title = {A Measure of Competitive Access to Destinations for Comparing Across Multiple Study Regions},
+  journal = {Geographical Analysis},
+  author = {Allen, Jeff and Farber, Steven},
+  doi = {10.1111/gean.12188},
+  url = {https://onlinelibrary.wiley.com/doi/abs/10.1111/gean.12188},
+}
+```
+
+```
+@article{allen2019tp,
+  title = {Sizing up transport poverty: A national scale accounting of low-income households suffering from inaccessibility in Canada, and what to do about it},
+  journal = {Transport Policy},
+  author={Allen, Jeff and Farber, Steven},
+  volume = {74},
+  pages = {214 - 223},
+  year = {2019},
+  issn = {0967-070X},
+  doi = {https://doi.org/10.1016/j.tranpol.2018.11.018},
+  url = {http://www.sciencedirect.com/science/article/pii/S0967070X18304736},
+}
+```
+
+
+Any comments or questions, contact me at jeff.allen AT utoronto.ca.
 
 -----------------------------
 
@@ -34,15 +62,3 @@ The code to generate the accessibility measures in this map are broken down into
 **computing-accessibility-metrics** - Code for inputting travel times and demographic and employment data from the Canadian census to generate measures of access to employment by travel mode.
 
 **analysis-and-plots** - Various R scripts for tabulating, correlating, and visualizing the accessibility measures alongside demographic and socio-econmoic data.
-
-**
-
-Any comments or questions, contact me at jeff.allen AT utoronto.ca. If the data are used for research purposes, please cite as
-
-```
-@techreport{allen2018,
-  Title    = {Generating measures of access to employment for Canada’s eight largest urban regions},
-  Author   = {Allen, Jeff and Farber, Steven},
-  Year     = {2018}
-}
-```
